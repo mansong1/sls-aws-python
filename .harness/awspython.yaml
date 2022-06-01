@@ -27,7 +27,7 @@ pipeline:
                                                     connectorRef: org.Github
                                                     gitFetchType: Branch
                                                     paths:
-                                                        - "."
+                                                        - /
                                                     repoName: sls-aws-python
                                                     branch: main
                           type: ServerlessAwsLambda
