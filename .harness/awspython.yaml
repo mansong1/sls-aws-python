@@ -50,6 +50,21 @@ pipeline:
                                 spec:
                                     commandOptions: ""
                                 failureStrategies: []
+                          - step:
+                                type: ShellScript
+                                name: Test
+                                identifier: Test
+                                spec:
+                                    shell: Bash
+                                    onDelegate: true
+                                    source:
+                                        type: Inline
+                                        spec:
+                                            script: sls test
+                                    environmentVariables: []
+                                    outputVariables: []
+                                    executionTarget: {}
+                                timeout: 10m
                       rollbackSteps:
                           - step:
                                 name: Serverless Aws Lambda Rollback
