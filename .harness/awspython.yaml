@@ -37,7 +37,7 @@ pipeline:
                           type: ServerlessAwsLambda
                           spec:
                               connectorRef: org.AWS
-                              stage: dev
+                              stage: <+stage.name>
                               region: us-east-1
                       allowSimultaneousDeployments: false
                   execution:
@@ -48,7 +48,7 @@ pipeline:
                                 type: ServerlessAwsLambdaDeploy
                                 timeout: 10m
                                 spec:
-                                    commandOptions: info
+                                    commandOptions: ""
                                 failureStrategies: []
                       rollbackSteps:
                           - step:
