@@ -48,7 +48,7 @@ pipeline:
                                 type: ServerlessAwsLambdaDeploy
                                 timeout: 10m
                                 spec:
-                                    commandOptions: ""
+                                    commandOptions: info
                                 failureStrategies: []
                       rollbackSteps:
                           - step:
