@@ -10,4 +10,4 @@ functions:
   hello:
     handler: handler.hello
     url: true
-    name: ${sls:service} - ${sls:function}
+    name: <+stage.name>-<+service.name>
