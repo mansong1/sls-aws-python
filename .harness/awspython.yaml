@@ -49,21 +49,6 @@ pipeline:
                                 timeout: 10m
                                 spec: {}
                                 failureStrategies: []
-                          - step:
-                                type: ShellScript
-                                name: Echo
-                                identifier: Echo
-                                spec:
-                                    shell: Bash
-                                    onDelegate: true
-                                    source:
-                                        type: Inline
-                                        spec:
-                                            script: echo <+execution.steps.ServerlessAwsLambdaDeploy.endpoint>
-                                    environmentVariables: []
-                                    outputVariables: []
-                                    executionTarget: {}
-                                timeout: 10m
                       rollbackSteps:
                           - step:
                                 name: Serverless Aws Lambda Rollback
