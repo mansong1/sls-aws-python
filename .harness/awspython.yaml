@@ -1,0 +1,65 @@
+pipeline:
+    name: aws-python
+    identifier: awspython
+    projectIdentifier: Serverless
+    orgIdentifier: default
+    tags: {}
+    stages:
+        - stage:
+              name: dev
+              identifier: dev
+              description: ""
+              type: Deployment
+              spec:
+                  serviceConfig:
+                      serviceRef: awspython
+                      serviceDefinition:
+                          spec:
+                              variables: []
+                              manifests:
+                                  - manifest:
+                                        identifier: awspython
+                                        type: ServerlessAwsLambda
+                                        spec:
+                                            store:
+                                                type: Github
+                                                spec:
+                                                    connectorRef: org.Github
+                                                    gitFetchType: Branch
+                                                    paths:
+                                                        - "."
+                                                    repoName: sls-aws-python
+                                                    branch: main
+                          type: ServerlessAwsLambda
+                  infrastructure:
+                      environmentRef: dev
+                      infrastructureDefinition:
+                          type: ServerlessAwsLambda
+                          spec:
+                              connectorRef: org.AWS
+                              stage: dev
+                              region: us-east-1
+                      allowSimultaneousDeployments: false
+                  execution:
+                      steps:
+                          - step:
+                                name: Serverless Aws Lambda Deploy
+                                identifier: ServerlessAwsLambdaDeploy
+                                type: ServerlessAwsLambdaDeploy
+                                timeout: 10m
+                                spec:
+                                    commandOptions: ""
+                      rollbackSteps:
+                          - step:
+                                name: Serverless Aws Lambda Rollback
+                                identifier: ServerlessAwsLambdaRollback
+                                type: ServerlessAwsLambdaRollback
+                                timeout: 10m
+                                spec: {}
+              tags: {}
+              failureStrategies:
+                  - onFailure:
+                        errors:
+                            - AllErrors
+                        action:
+                            type: StageRollback
