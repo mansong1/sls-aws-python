@@ -49,6 +49,22 @@ pipeline:
                                 timeout: 10m
                                 spec:
                                     commandOptions: ""
+                                failureStrategies: []
+                          - step:
+                                type: ShellScript
+                                name: Invoke
+                                identifier: Invoke
+                                spec:
+                                    shell: Bash
+                                    onDelegate: true
+                                    source:
+                                        type: Inline
+                                        spec:
+                                            script: serverless invoke --function hello
+                                    environmentVariables: []
+                                    outputVariables: []
+                                    executionTarget: {}
+                                timeout: 10m
                       rollbackSteps:
                           - step:
                                 name: Serverless Aws Lambda Rollback
