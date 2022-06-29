@@ -49,8 +49,6 @@ pipeline:
                                 timeout: 10m
                                 spec:
                                     commandOptions: ""
-                                    delegateSelectors:
-                                        - chaoscluster
                                 failureStrategies: []
                       rollbackSteps:
                           - step:
@@ -67,3 +65,5 @@ pipeline:
                             - AllErrors
                         action:
                             type: StageRollback
+              delegateSelectors:
+                  - chaoscluster
