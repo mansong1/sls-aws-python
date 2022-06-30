@@ -67,5 +67,3 @@ pipeline:
                             - AllErrors
                         action:
                             type: StageRollback
-              delegateSelectors:
-                  - chaoscluster
