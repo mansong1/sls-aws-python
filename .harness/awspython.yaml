@@ -24,7 +24,7 @@ pipeline:
                                             store:
                                                 type: Github
                                                 spec:
-                                                    connectorRef: org.Github
+                                                    connectorRef: account.Github
                                                     gitFetchType: Branch
                                                     paths:
                                                         - /
