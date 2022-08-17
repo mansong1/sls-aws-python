@@ -27,10 +27,10 @@ pipeline:
                                                     connectorRef: account.Github
                                                     gitFetchType: Branch
                                                     paths:
-                                                        - /
+                                                        - "."
                                                     repoName: sls-aws-python
                                                     branch: main
-                                            configOverridePath: ""
+                                            configOverridePath: serverless.yml
                           type: ServerlessAwsLambda
                   infrastructure:
                       environmentRef: dev
