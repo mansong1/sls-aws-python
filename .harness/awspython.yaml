@@ -30,7 +30,7 @@ pipeline:
                                                         - /
                                                     repoName: sls-aws-python
                                                     branch: main
-                                            configOverridePath: serverless.yml
+                                            configOverridePath: ""
                           type: ServerlessAwsLambda
                   infrastructure:
                       environmentRef: dev
