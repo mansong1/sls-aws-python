@@ -28,7 +28,7 @@ pipeline:
                   spec:
                     connectorRef: account.harnessImage
                     image: bash
-                    shell: Sh
+                    shell: Bash
                     command: |-
                       echo "Hello, World" > helloworld.txt
 
@@ -56,6 +56,7 @@ pipeline:
                     privileged: true
                     envVariables:
                       plugin_artifact_file: /harness/artifact/artifacts.json
+                  failureStrategies: []
               - step:
                   type: S3Upload
                   name: s3Upload
