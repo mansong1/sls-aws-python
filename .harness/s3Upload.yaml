@@ -15,7 +15,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: account.EKS
+              connectorRef: account.MiniKube
               namespace: default
               automountServiceAccountToken: true
               nodeSelector: {}
