@@ -35,6 +35,17 @@ pipeline:
                       plugin_artifact_file: /harness/artifact/artifacts.json
                   failureStrategies: []
               - step:
+                  type: Plugin
+                  name: mansong-s3
+                  identifier: mansongs3
+                  spec:
+                    connectorRef: org.Dockerhub
+                    image: mansong/s3:latest
+                    settings:
+                      bucket: harness-sam
+                      source: helloworld.txt
+                      region: us-east-2
+              - step:
                   type: S3Upload
                   name: s3Upload
                   identifier: s3Upload
