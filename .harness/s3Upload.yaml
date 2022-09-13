@@ -1,0 +1,42 @@
+pipeline:
+  name: s3Upload
+  identifier: s3Upload
+  projectIdentifier: Serverless
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: s3Upload
+        identifier: s3Upload
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.MiniKube
+              namespace: default
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: CreateFile
+                  identifier: CreateFile
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: bash
+                    shell: Sh
+                    command: echo "Hello, World" > hellworld.txt
+              - step:
+                  type: S3Upload
+                  name: s3Upload
+                  identifier: s3Upload
+                  spec:
+                    connectorRef: org.AWS
+                    region: us-east-2
+                    bucket: harness-sam
+                    sourcePath: helloworld.txt
