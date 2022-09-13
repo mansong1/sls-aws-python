@@ -37,7 +37,7 @@ pipeline:
                       mkdir -p artifact
                       touch /harness/artifact/artifacts.json
 
-                      cat >$PLUGIN_ARTIFACT_FILE << 'EOF'
+                      cat << EOF > $PLUGIN_ARTIFACT_FILE
                       {
                         "kind": "fileUpload/v1",
                         "data": {
