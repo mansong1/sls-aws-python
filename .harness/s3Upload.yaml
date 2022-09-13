@@ -79,3 +79,5 @@ pipeline:
                     command: |-
                       env
                       echo $PLUGIN_ARTIFACT_FILE
+          sharedPaths:
+            - /harness/artifact/
