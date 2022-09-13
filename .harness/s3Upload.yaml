@@ -29,8 +29,29 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: bash
                     shell: Bash
+                    command: echo "Hello, World" > helloworld.txt
+                    privileged: true
+                    envVariables:
+                      plugin_artifact_file: /harness/artifact/artifacts.json
+                  failureStrategies: []
+              - step:
+                  type: S3Upload
+                  name: s3Upload
+                  identifier: s3Upload
+                  spec:
+                    connectorRef: org.AWS
+                    region: us-east-2
+                    bucket: harness-sam
+                    sourcePath: helloworld.txt
+              - step:
+                  type: Run
+                  name: SeeFiles
+                  identifier: SeeFiles
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: bash
+                    shell: Bash
                     command: |-
-                      echo "Hello, World" > helloworld.txt
 
                       ls
                       mkdir -p artifact
@@ -51,19 +72,5 @@ pipeline:
                         }
                       }' 
 
-                      echo "$json" > /harness/artifact/artifacts.json
-                    privileged: true
-                    envVariables:
-                      plugin_artifact_file: /harness/artifact/artifacts.json
-                  failureStrategies: []
-              - step:
-                  type: S3Upload
-                  name: s3Upload
-                  identifier: s3Upload
-                  spec:
-                    connectorRef: org.AWS
-                    region: us-east-2
-                    bucket: harness-sam
-                    sourcePath: helloworld.txt
-          sharedPaths:
-            - /harness/artifact/
+                      echo "$json" >> /harness/artifact/artifacts.json
+                      cat /harness/artifact/artifacts.json
