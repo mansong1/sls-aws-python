@@ -32,7 +32,7 @@ pipeline:
                     command: echo "Hello, World" > helloworld.txt
                     privileged: true
                     envVariables:
-                      plugin_artifact_file: /harness/artifact/artifacts.json
+                      PLUGIN_ARTIFACT_FILE: /harness/artifact/artifacts.json
                   failureStrategies: []
               - step:
                   type: Plugin
