@@ -33,6 +33,8 @@ pipeline:
                     command: |-
                       echo "Hello, World" > helloworld.txt
 
+                      mkdir -p artifact/
+
                       cat >$PLUGIN_ARTIFACT_FILE << 'EOF'
                       {
                         "kind": "fileUpload/v1",
