@@ -34,7 +34,7 @@ pipeline:
 
                       ls
 
-                      mkdir -p /harness/artifact
+                      mkdir -p artifact
 
                       cat >$PLUGIN_ARTIFACT_FILE << 'EOF'
                       {
@@ -42,7 +42,7 @@ pipeline:
                         "data": {
                           "fileArtifacts": [
                             {
-                              "name": "helloWorld",
+                              "name": "helloWorld.txt",
                               "url": "true"
                             }
                             {
