@@ -40,7 +40,7 @@ pipeline:
                         "data": {
                           "fileArtifacts": [
                             {
-                              "name": "helloWorld.txt",
+                              "name": "helloworld",
                               "url": "true"
                             }
                             {
