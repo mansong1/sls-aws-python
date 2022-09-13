@@ -43,6 +43,7 @@ pipeline:
                     region: us-east-2
                     bucket: harness-sam
                     sourcePath: helloworld.txt
+                  failureStrategies: []
               - step:
                   type: Run
                   name: SeeFiles
@@ -52,25 +53,24 @@ pipeline:
                     image: bash
                     shell: Bash
                     command: |-
-
                       ls
-                      mkdir -p artifact
+                      # mkdir -p artifact
 
-                      json='{
-                        "kind": "fileUpload/v1",
-                        "data": {
-                          "fileArtifacts": [
-                            {
-                              "name": "helloworld",
-                              "url": "true"
-                            }
-                            {
-                              "name": "myArtiFat",
-                              "url": "true"
-                            }
-                          ]
-                        }
-                      }' 
+                      # json='{
+                      #   "kind": "fileUpload/v1",
+                      #   "data": {
+                      #     "fileArtifacts": [
+                      #       {
+                      #         "name": "helloworld",
+                      #         "url": "true"
+                      #       }
+                      #       {
+                      #         "name": "myArtiFat",
+                      #         "url": "true"
+                      #       }
+                      #     ]
+                      #   }
+                      # }' 
 
-                      echo "$json" >> /harness/artifact/artifacts.json
+                      # echo "$json" >> /harness/artifact/artifacts.json
                       cat /harness/artifact/artifacts.json
