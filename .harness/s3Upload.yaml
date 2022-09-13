@@ -68,6 +68,7 @@ pipeline:
                       region: us-east-2
                       access_key: <+secrets.getValue('AWS_ACCESS_KEY_ID')>
                       secret_key: <+secrets.getValue('AWS_SECRET_ACCESS_KEY')>
+                      artifact_file: /harness/artifact/artifacts.json
               - step:
                   type: Run
                   name: EnvVar
