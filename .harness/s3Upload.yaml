@@ -33,12 +33,9 @@ pipeline:
                       echo "Hello, World" > helloworld.txt
 
                       ls
-
                       mkdir -p artifact
-                      touch /harness/artifact/artifacts.json
 
-                      cat << EOF > $PLUGIN_ARTIFACT_FILE
-                      {
+                      json = {
                         "kind": "fileUpload/v1",
                         "data": {
                           "fileArtifacts": [
@@ -53,7 +50,8 @@ pipeline:
                           ]
                         }
                       } 
-                      EOF
+
+                      echo -e json > /harness/artifact/artifacts.json
                     privileged: true
                     envVariables:
                       plugin_artifact_file: /harness/artifact/artifacts.json
