@@ -8,7 +8,6 @@ pipeline:
     - stage:
         name: s3Upload
         identifier: s3Upload
-        description: ""
         type: CI
         spec:
           cloneCodebase: false
@@ -33,7 +32,9 @@ pipeline:
                     command: |-
                       echo "Hello, World" > helloworld.txt
 
-                      mkdir -p artifact
+                      ls
+
+                      mkdir -p /harness/artifact
 
                       cat >$PLUGIN_ARTIFACT_FILE << 'EOF'
                       {
@@ -63,3 +64,5 @@ pipeline:
                     region: us-east-2
                     bucket: harness-sam
                     sourcePath: helloworld.txt
+          sharedPaths:
+            - /harness/artifact/
