@@ -30,7 +30,28 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: bash
                     shell: Sh
-                    command: echo "Hello, World" > helloworld.txt
+                    command: |-
+                      echo "Hello, World" > helloworld.txt
+
+                      cat >$PLUGIN_ARTIFACT_FILE << 'EOF'
+                      {
+                        "kind": "fileUpload/v1",
+                        "data": {
+                          "fileArtifacts": [
+                            {
+                              "name": "helloWorld",
+                              "url": "true"
+                            }
+                            {
+                              "name": "myArtiFat",
+                              "url": "true"
+                            }
+                          ]
+                        }
+                      } 
+                      EOF
+                    envVariables:
+                      plugin_artifact_file: /harness/artifact/artifacts.json
               - step:
                   type: S3Upload
                   name: s3Upload
