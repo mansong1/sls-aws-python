@@ -87,3 +87,7 @@ pipeline:
 
                       # echo "$json" >> /harness/artifact/artifacts.json
                       cat /harness/artifact/artifacts.json
+                  when:
+                    stageStatus: Success
+                    condition: "false"
+                  failureStrategies: []
