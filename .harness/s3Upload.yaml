@@ -35,6 +35,7 @@ pipeline:
                       ls
 
                       mkdir -p artifact
+                      touch /harness/artifact/artifacts.json
 
                       cat >$PLUGIN_ARTIFACT_FILE << 'EOF'
                       {
