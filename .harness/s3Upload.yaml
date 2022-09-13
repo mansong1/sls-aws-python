@@ -45,8 +45,8 @@ pipeline:
                       bucket: harness-sam
                       source: helloworld.txt
                       region: us-east-2
-                      access_key: <+secret.getValue('AWS_ACCESS_KEY_ID')>
-                      secret_key: <+secret.getValue('AWS_SECRET_ACCESS_KEY')>
+                      access_key: <+secrets.getValue('AWS_ACCESS_KEY_ID')>
+                      secret_key: <+secrets.getValue('AWS_SECRET_ACCESS_KEY')>
               - step:
                   type: S3Upload
                   name: s3Upload
