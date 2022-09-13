@@ -29,7 +29,28 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: bash
                     shell: Bash
-                    command: echo "Hello, World" > helloworld.txt
+                    command: |-
+                      echo "Hello, World" > helloworld.txt
+
+                      mkdir -p artifact
+
+                      json='{
+                        "kind": "fileUpload/v1",
+                        "data": {
+                          "fileArtifacts": [
+                            {
+                              "name": "helloworld",
+                              "url": "true"
+                            }
+                            {
+                              "name": "myArtiFat",
+                              "url": "true"
+                            }
+                          ]
+                        }
+                      }' 
+
+                      echo "$json" >> /harness/artifact/artifacts.json
                     privileged: true
                     envVariables:
                       PLUGIN_ARTIFACT_FILE: /harness/artifact/artifacts.json
