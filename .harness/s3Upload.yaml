@@ -35,7 +35,7 @@ pipeline:
                       ls
                       mkdir -p artifact
 
-                      json = {
+                      json='{
                         "kind": "fileUpload/v1",
                         "data": {
                           "fileArtifacts": [
@@ -49,9 +49,9 @@ pipeline:
                             }
                           ]
                         }
-                      } 
+                      }' 
 
-                      echo -e json > /harness/artifact/artifacts.json
+                      echo "$json" > /harness/artifact/artifacts.json
                     privileged: true
                     envVariables:
                       plugin_artifact_file: /harness/artifact/artifacts.json
