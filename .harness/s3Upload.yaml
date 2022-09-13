@@ -33,7 +33,7 @@ pipeline:
                     command: |-
                       echo "Hello, World" > helloworld.txt
 
-                      mkdir -p artifact/
+                      mkdir -p artifact
 
                       cat >$PLUGIN_ARTIFACT_FILE << 'EOF'
                       {
