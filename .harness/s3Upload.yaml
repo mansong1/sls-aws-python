@@ -59,6 +59,17 @@ pipeline:
                   failureStrategies: []
               - step:
                   type: Run
+                  name: EnvVar
+                  identifier: EnvVar
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: bash
+                    shell: Bash
+                    command: |-
+                      env
+                      echo $PLUGIN_ARTIFACT_FILE
+              - step:
+                  type: Run
                   name: SeeFiles
                   identifier: SeeFiles
                   spec:
