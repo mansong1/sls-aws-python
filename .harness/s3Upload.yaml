@@ -30,7 +30,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: bash
                     shell: Sh
-                    command: echo "Hello, World" > hellworld.txt
+                    command: echo "Hello, World" > helloworld.txt
               - step:
                   type: S3Upload
                   name: s3Upload
