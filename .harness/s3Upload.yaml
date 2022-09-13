@@ -53,6 +53,7 @@ pipeline:
                         }
                       } 
                       EOF
+                    privileged: true
                     envVariables:
                       plugin_artifact_file: /harness/artifact/artifacts.json
               - step:
