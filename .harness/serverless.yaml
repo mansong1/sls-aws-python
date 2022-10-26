@@ -21,6 +21,9 @@ pipeline:
                   timeout: 10m
                   spec:
                     commandOptions: ""
+                    delegateSelectors:
+                      - bottlerocket
+                  failureStrategies: []
             rollbackSteps:
               - step:
                   name: Serverless Lambda Rollback
